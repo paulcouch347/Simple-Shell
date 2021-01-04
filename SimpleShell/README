@@ -1,0 +1,24 @@
+Author: Paul Couch
+Contents: shell.cpp - Main implementation of the shell, executes the commands
+	shell.h - defines the helper function in parser.c
+	parser.c - contains helper functions for taking commands from the command line
+	Makefile - a makefile for compiling the program
+	README - this file
+Running: To compile, type "make" into the command line and execute. Then the program
+	can be run by typing "./shell" into the command line to run the executable.
+Implementation: For the built-in functions, I wrote two functions each for cd and setenv
+	that differed based on the number of arguments. The shell distinguishes these 
+	commands from external functions by checking if a command is cd or setenv
+	by using strcmp, after checking if it is exit, and if the command is not one of 
+	these then it executes call_redirected which executes external commands.
+Limitations: My Shell fails five of the test cases. The first one is case 6 which 
+	has to do with the control signal. I tried to handle this and my program does 
+	handle terminating a child process without terminating the shell, but the test
+	case doesn't work for some reason. The next two cases are 8 and 10 which both
+	have to do with redirection. I have no idea why these are failing because when
+	I run the shell on its own and execute a command like "ls > ls-out.txt" it works
+	fine. The last two cases that failed are 20 and 21 which both have to do with
+	setenv. I have no idea why these are failing either because when I run the shell
+	and execute setenv and then printenv I can see the variable that I created, so it
+	seems to me like it is working fine.
+Refernces: None
